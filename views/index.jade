@@ -1,0 +1,43 @@
+extends layout
+
+append css
+	style(type='text/css')
+		
+block content
+	h1= title
+	table.table
+		thead
+			tr
+				th
+					类型
+				th
+					时间
+				th
+					申请金额
+				th
+					申请原由
+				th
+					处理
+		tbody
+		each apply in applies
+			tr
+				td
+					if apply.class === 'food'
+						吃饭
+					else if apply.class === 'clothes'
+						衣服
+					else if apply.class === 'internet'
+						上网
+					else if apply.class === 'sleep'
+						住宿
+					else if apply.class === 'party'
+						聚餐
+				td
+					=moment(apply.date).format('YYYY-MM-DD HH:mm:ss')
+				td
+					=apply.price
+				td
+					=apply.reason
+				td
+					a(href='#')
+						查看
